@@ -1,5 +1,6 @@
 name: 'Hello World'
 description: 'Greet someone'
+
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
@@ -9,6 +10,7 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
+
 runs:
   using: "composite"
   steps:
@@ -32,4 +34,3 @@ runs:
     - name: Run goodbye.sh
       run: goodbye.sh
       shell: bash
-
