@@ -22,5 +22,6 @@ function check_npm() {
     npm -v
 }
 
+jfrog -v
 check_jfrog_cli
 check_npm
