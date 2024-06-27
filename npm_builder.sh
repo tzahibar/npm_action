@@ -34,5 +34,6 @@ function install_npm() {
 
 install_jfrog_cli
 install_npm
+sleep 15
 check_jfrog_cli
 check_npm
