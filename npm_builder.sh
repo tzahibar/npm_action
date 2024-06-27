@@ -8,6 +8,7 @@ function check_jfrog_cli() {
         echo "JFrog CLI is not installed. Exiting..."
         exit 1
     fi
+    echo "JFrog CLI is installed. Version:"
     jfrog -v
 }
 
@@ -17,5 +18,6 @@ function check_npm() {
         echo "NPM is not installed. Exiting..."
         exit 1
     fi
+    echo "NPM is installed. Version:"
     npm -v
 }
