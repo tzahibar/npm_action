@@ -1,29 +1,25 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'NPM Build and Deploy'
+description: 'Build NPM projects and deploys them to Artifactory'
 
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  deployer:
+    description: 'Build deployer'
+    required: false
+  resolver:
+    description: 'Build resolver'
+    required: false
 
 runs:
   using: "composite"
   steps:
-    - name: Set Greeting
-      run: echo "Hello $INPUT_WHO_TO_GREET."
+    - name: Set deployer
+      run: |
+        echo "Deployer - $DEPLOYER"
+        echo "Resolver - $RESOLVER"
       shell: bash
       env:
-        INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
-
-    - name: Random Number Generator
-      id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
+        DEPLOYER: ${{ inputs.deployer }}
+        RESOLVER: ${{ inputs.Resolver }}
 
     - name: Set GitHub Path
       run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
@@ -31,6 +27,6 @@ runs:
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
-    - name: Run goodbye.sh
-      run: goodbye.sh
+    - name: Create NPM Configurations
+      run: npm_builder.sh
       shell: bash
