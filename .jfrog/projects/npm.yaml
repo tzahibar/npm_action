@@ -1,0 +1,8 @@
+version: 1
+type: npm
+resolver:
+    repo: tzahi_npm_remote_test
+    serverId: ghpoc
+deployer:
+    repo: tzahi_npm_test
+    serverId: ghpoc
