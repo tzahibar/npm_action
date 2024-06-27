@@ -21,3 +21,6 @@ function check_npm() {
     echo "NPM is installed. Version:"
     npm -v
 }
+
+check_jfrog_cli
+check_npm
