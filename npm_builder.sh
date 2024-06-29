@@ -22,16 +22,6 @@ function check_npm() {
     npm -v
 }
 
-#install jfrog cli on ubuntu
-function install_jfrog_cli() {
-    curl -fL https://install-cli.jfrog.io | sh
-}
-
-#install npm on ubuntu
-function install_npm() {
-    sudo apt install npm
-}
-
 install_jfrog_cli
 install_npm
 jfrog -v
