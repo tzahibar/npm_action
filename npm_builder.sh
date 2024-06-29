@@ -22,6 +22,7 @@ function check_npm() {
     npm -v
 }
 
-install_jfrog_cli
-install_npm
-jfrog -v
+# Check if JFrog CLI is installed
+check_jfrog_cli
+# Check if NPM is installed
+check_npm
