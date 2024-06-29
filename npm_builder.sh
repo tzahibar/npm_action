@@ -2,27 +2,15 @@
 
 echo "hi"
 
-# Check if JFrog CLI is installed, if it does print the version, if not exit with error
-function check_jfrog_cli() {
-    if ! command -v jfrog &> /dev/null; then
-        echo "JFrog CLI is not installed. Exiting..."
-        exit 1
-    fi
-    echo "JFrog CLI is installed. Version:"
-    jfrog -v
+# Configure NPM.yml file
+function configure_npm_yml() {
+  local filePath
+
+  filePath='.jfrog/projects/npm.yaml'
+  # Update the version to 1.0.0
+  sed -i 's/^version: .*/version: 1.0.0/' "${filePath}"
+  cat "${filePath}"
 }
 
-# Check if NPM is installed, if it does print the version, if not exit with error
-function check_npm() {
-    if ! command -v npm &> /dev/null; then
-        echo "NPM is not installed. Exiting..."
-        exit 1
-    fi
-    echo "NPM is installed. Version:"
-    npm -v
-}
-
-# Check if JFrog CLI is installed
-check_jfrog_cli
-# Check if NPM is installed
-check_npm
+# Configure NPM.yml file
+configure_npm_yml

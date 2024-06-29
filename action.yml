@@ -8,6 +8,12 @@ inputs:
   resolver:
     description: 'Build resolver'
     required: false
+  build_name:
+    description: 'Build name'
+    required: false
+  build_number:
+    description: 'Build number'
+    required: false
 
 runs:
   using: "composite"
@@ -27,6 +33,10 @@ runs:
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
-    - name: Create NPM Configurations
+    - name: Build Pre Requisites
+      run: build_pre_req.sh
+      shell: bash
+
+    - name: Configure NPM
       run: npm_builder.sh
       shell: bash
