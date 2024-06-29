@@ -15,8 +15,8 @@ function configure_npm_yml() {
 /^type: npm$/ {
     print
     print "resolver:"
-    print "    repo: tzahi_npm_remote_test"
-    print "    serverId: ghpoc"
+    print "    repo: asd"
+    print "    serverId: asd"
     next
 }
 { print }
