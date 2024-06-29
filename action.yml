@@ -27,12 +27,6 @@ runs:
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
-    - name: Setup up JFrog CLI
-      uses: jfrog/setup-jfrog-cli@v3
-      env:
-        JF_URL: ${{ secrets.ARTIFACTORY_URL }}
-        JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
-
     - name: Create NPM Configurations
       run: npm_builder.sh
       shell: bash
