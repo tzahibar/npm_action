@@ -35,6 +35,20 @@ EOL
 ' "$tempYamlFile" > temp.yml && mv temp.yml "$tempYamlFile"
   fi
 
+  if [[ -n "${deployer}" ]]; then
+  echo "Adding a resolver to npm.yml file"
+  awk -v deployer="${deployer}" '
+/^type: npm$/ {
+    print
+    print "resolver:"
+    print "    repo: " deployer
+    print "    serverId: ghpoc"
+    next
+}
+{ print }
+' "$tempYamlFile" > temp.yml && mv temp.yml "$tempYamlFile"
+  fi
+
   cat "${tempYamlFile}"
 }
 
