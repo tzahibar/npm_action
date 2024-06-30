@@ -21,7 +21,6 @@ EOL
 
   # Output the temporary YAML file path
   echo "Temporary YAML file created at: $tempYamlFile"
-  cat "${tempYamlFile}"
 
   if [[ -n "${deployer}" ]]; then
   deployer="deployer:
@@ -31,8 +30,6 @@ EOL
   echo "${deployer}" >> "$tempYamlFile"
   fi
 
-  cat "${tempYamlFile}"
-
   if [[ -n "${resolver}" ]]; then
   resolver="resolver:
     repo: tzahi_npm_remote_test
@@ -41,6 +38,7 @@ EOL
   echo "${resolver}" >> "$tempYamlFile"
   fi
 
+  echo "final:"
   cat "${tempYamlFile}"
 }
 
