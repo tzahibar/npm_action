@@ -6,7 +6,7 @@ echo "hi"
 function configure_npm_yml() {
   local filePath
 
-  filePath='.jfrog/projects/npm.yaml'
+  filePath='.jfrog/projects/npma.yaml'
   # Update the version to 1.0.0
   sed -i 's/^version: .*/version: 1.0.0/' "${filePath}"
 
