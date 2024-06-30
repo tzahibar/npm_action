@@ -6,7 +6,7 @@ echo "hi"
 function configure_npm_yml() {
   local tempYamlFile
 
-  tempYamlFile=$(mktemp /tmp/npm.yml)
+  tempYamlFile=$(mktemp /tmp/temp_yaml.XXXXXX.yml)
 
   # Create the temporary YAML file with custom parameters
 cat <<EOL > "$tempYamlFile"
