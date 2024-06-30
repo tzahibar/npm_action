@@ -17,19 +17,22 @@ inputs:
   build_number:
     description: 'Build number'
     required: false
+  server_id:
+    description: 'Server ID'
+    required: false
+  rt_url:
+    description: 'Artifactory URL'
+    required: false
+  rt_access_token:
+    description: 'Artifactory access token'
+    required: false
+  user:
+    description: 'User name'
+    required: false
 
 runs:
   using: "composite"
   steps:
-    - name: Set deployer
-      run: |
-        echo "Deployer - $DEPLOYER"
-        echo "Resolver - $RESOLVER"
-      shell: bash
-      env:
-        DEPLOYER: ${{ inputs.deployer }}
-        RESOLVER: ${{ inputs.Resolver }}
-
     - name: Set GitHub Path
       run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
       shell: bash
@@ -44,6 +47,7 @@ runs:
       #run: npm_builder.sh ${{ inputs.version }} ${{ inputs.resolver }}
       run: |
         source npm_builder.sh
-        configure_npm_yml "12345" "tzahi-res" "tzahi-dep"
-        install_npm_package "my_build" "999"
+        configure_npm_yml ${{ inputs.version }} ${{ inputs.resolver }} ${{ inputs.deployer }}
+        install_npm_package ${{ inputs.build_name }} ${{ inputs.build_number }}
+        configure_jfrog_server ${{ inputs.server_id }} ${{ inputs.rt_url }} ${{ inputs.rt_access_token }} ${{ inputs.user }}
       shell: bash

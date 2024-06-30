@@ -53,6 +53,19 @@ EOL
   cat "${tempYamlFile}"
 }
 
+# Configure JFrog server
+function configure_jfrog_server() {
+  local serverId url accessToken username
+
+  serverId="${1}"
+  url="${2}"
+  accessToken="${4}"
+  username="${3}"
+
+  # Configure JFrog server
+  jf c add "${serverId}" --artifactory-url="${url}" --user="${username}" --password="${accessToken}"
+}
+
 # Install NPM package using JFrog CLI
 function install_npm_package() {
   local buildName buildNumber
