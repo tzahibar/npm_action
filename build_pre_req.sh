@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo "hi"
-
 # Check if JFrog CLI is installed, if it does print the version, if not exit with error
 function check_jfrog_cli() {
     if ! command -v jfrog &> /dev/null; then

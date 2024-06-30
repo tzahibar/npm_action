@@ -23,14 +23,14 @@ EOL
 
   if [[ -n "${resolver}" ]]; then
   echo "Adding a resolver to npm.yml file"
-  awk '
+  awk -v resolver="${resolver}" '
 /^type: npm$/ {
     print
     print "resolver:"
-    print "    repo: tzahi_npm_remote_test"
+    print "    repo: " resolver
     print "    serverId: ghpoc"
     next
-}`
+}
 { print }
 ' "$tempYamlFile" > temp.yml && mv temp.yml "$tempYamlFile"
   fi
