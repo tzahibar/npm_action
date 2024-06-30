@@ -41,5 +41,5 @@ runs:
       shell: bash
 
     - name: Configure NPM
-      run: npm_builder.sh ${{ inputs.version }}
+      run: npm_builder.sh ${{ inputs.version }} ${{ inputs.resolver }}
       shell: bash
