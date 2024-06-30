@@ -25,7 +25,7 @@ EOL
 
   if [[ -n "${deployer}" ]]; then
   echo "Adding a deployer to npm.yml file"
-  awk -v deployer="${deployer}" serverId="${serverId}" '
+  awk -v deployer="${deployer}" -v serverId="${serverId}" '
 /^type: npm$/ {
     print
     print "deployer:"
@@ -39,7 +39,7 @@ EOL
 
   if [[ -n "${resolver}" ]]; then
   echo "Adding a resolver to npm.yml file"
-  awk -v resolver="${resolver}" serverId="${serverId}"'
+  awk -v resolver="${resolver}" -v serverId="${serverId}"'
 /^type: npm$/ {
     print
     print "resolver:"
