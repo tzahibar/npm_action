@@ -8,6 +8,7 @@ function configure_npm_yml() {
 
   version="${1}"
   resolver="${2}"
+  deployer="${3}"
 
   tempYamlFile=$(mktemp /tmp/temp_yaml.XXXXXX.yml)
 
@@ -53,4 +54,4 @@ EOL
 }
 
 # Configure NPM.yml file
-configure_npm_yml "${1}" "${2}"
+configure_npm_yml "${1}" "${2}" "${3}"
