@@ -2,6 +2,9 @@ name: 'NPM Build and Deploy'
 description: 'Build NPM projects and deploys them to Artifactory'
 
 inputs:
+  version:
+    description: 'Build version'
+    required: false
   deployer:
     description: 'Build deployer'
     required: false
@@ -38,5 +41,5 @@ runs:
       shell: bash
 
     - name: Configure NPM
-      run: npm_builder.sh
+      run: npm_builder.sh ${{ inputs.version }}
       shell: bash
