@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo "hi"
-
 # Configure NPM.yml file
 function configure_npm_yml() {
   local tempYamlFile version resolver deployer serverId
@@ -10,6 +8,8 @@ function configure_npm_yml() {
   resolver="${2}"
   deployer="${3}"
   serverId="${4}"
+
+  echo "Configuring NPM.yml file"
 
   tempYamlFile=$(mktemp /tmp/temp_yaml.XXXXXX.yml)
 
@@ -50,6 +50,8 @@ function configure_jfrog_server() {
   url="${2}"
   accessToken="${3}"
   username="${4}"
+
+  echo "Configuring JFrog server"
 
   # Configure JFrog server
   echo "jf c add ${serverId} --artifactory-url=${url} --user=${username} --password=${accessToken}"
