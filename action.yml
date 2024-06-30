@@ -48,6 +48,18 @@ runs:
       run: |
         source npm_builder.sh
         configure_npm_yml ${{ inputs.version }} ${{ inputs.resolver }} ${{ inputs.deployer }}
+      shell: bash
+
+    - name: Configure JFROG Server
+      #run: npm_builder.sh ${{ inputs.version }} ${{ inputs.resolver }}
+      run: |
+        source npm_builder.sh
         configure_jfrog_server ${{ inputs.server_id }} ${{ inputs.rt_url }} ${{ inputs.rt_access_token }} ${{ inputs.user }}
+      shell: bash
+
+    - name: Install NPM Package
+      #run: npm_builder.sh ${{ inputs.version }} ${{ inputs.resolver }}
+      run: |
+        source npm_builder.sh
         install_npm_package ${{ inputs.build_name }} ${{ inputs.build_number }}
       shell: bash
