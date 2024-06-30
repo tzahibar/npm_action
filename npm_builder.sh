@@ -48,10 +48,11 @@ function configure_jfrog_server() {
 
   serverId="${1}"
   url="${2}"
-  accessToken="${4}"
-  username="${3}"
+  accessToken="${3}"
+  username="${4}"
 
   # Configure JFrog server
+  echo "jf c add ${serverId} --artifactory-url=${url} --user=${username} --password=${accessToken}"
   jf c add "${serverId}" --artifactory-url="${url}" --user="${username}" --password="${accessToken}"
 }
 
