@@ -41,5 +41,6 @@ runs:
       shell: bash
 
     - name: Configure NPM
-      run: npm_builder.sh ${{ inputs.version }} ${{ inputs.resolver }}
+      #run: npm_builder.sh ${{ inputs.version }} ${{ inputs.resolver }}
+      run: npm_builder.sh "12345" "tzahi-res"
       shell: bash
