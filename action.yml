@@ -48,6 +48,6 @@ runs:
       run: |
         source npm_builder.sh
         configure_npm_yml ${{ inputs.version }} ${{ inputs.resolver }} ${{ inputs.deployer }}
-        install_npm_package ${{ inputs.build_name }} ${{ inputs.build_number }}
         configure_jfrog_server ${{ inputs.server_id }} ${{ inputs.rt_url }} ${{ inputs.rt_access_token }} ${{ inputs.user }}
+        install_npm_package ${{ inputs.build_name }} ${{ inputs.build_number }}
       shell: bash

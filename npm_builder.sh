@@ -4,11 +4,12 @@ echo "hi"
 
 # Configure NPM.yml file
 function configure_npm_yml() {
-  local tempYamlFile version resolver deployer
+  local tempYamlFile version resolver deployer serverId
 
   version="${1}"
   resolver="${2}"
   deployer="${3}"
+  serverId="${4}"
 
   tempYamlFile=$(mktemp /tmp/temp_yaml.XXXXXX.yml)
 
@@ -24,12 +25,12 @@ EOL
 
   if [[ -n "${deployer}" ]]; then
   echo "Adding a deployer to npm.yml file"
-  awk -v deployer="${deployer}" '
+  awk -v deployer="${deployer}" serverId="${serverId}" '
 /^type: npm$/ {
     print
     print "deployer:"
     print "    repo: " deployer
-    print "    serverId: ghpoc"
+    print "    serverId: serverId"
     next
 }
 { print }
@@ -38,12 +39,12 @@ EOL
 
   if [[ -n "${resolver}" ]]; then
   echo "Adding a resolver to npm.yml file"
-  awk -v resolver="${resolver}" '
+  awk -v resolver="${resolver}" serverId="${serverId}"'
 /^type: npm$/ {
     print
     print "resolver:"
     print "    repo: " resolver
-    print "    serverId: ghpoc"
+    print "    serverId: serverId"
     next
 }
 { print }
