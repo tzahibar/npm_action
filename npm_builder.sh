@@ -24,31 +24,21 @@ EOL
   cat "${tempYamlFile}"
 
   if [[ -n "${deployer}" ]]; then
-  echo "Adding a deployer to npm.yml file"
-  awk -v deployer="${deployer}" -v serverId="${serverId}" '
-/^type: npm$/ {
-    print
-    print "deployer:"
-    print "    repo: " deployer
-    print "    serverId: serverId"
-    next
-}
-{ print }
-' "$tempYamlFile" > temp.yml && mv temp.yml "$tempYamlFile"
+  deployer="deployer:
+    repo: tzahi_npm_remote_test
+    serverId: ghpoc"
+
+  echo "${deployer}" >> "$tempYamlFile"
   fi
 
+  cat "${tempYamlFile}"
+
   if [[ -n "${resolver}" ]]; then
-  echo "Adding a resolver to npm.yml file"
-  awk -v resolver="${resolver}" -v serverId="${serverId}"'
-/^type: npm$/ {
-    print
-    print "resolver:"
-    print "    repo: " resolver
-    print "    serverId: serverId"
-    next
-}
-{ print }
-' "$tempYamlFile" > temp.yml && mv temp.yml "$tempYamlFile"
+  resolver="resolver:
+    repo: tzahi_npm_remote_test
+    serverId: ghpoc"
+
+  echo "${resolver}" >> "$tempYamlFile"
   fi
 
   cat "${tempYamlFile}"
