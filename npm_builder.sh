@@ -53,5 +53,13 @@ EOL
   cat "${tempYamlFile}"
 }
 
-# Configure NPM.yml file
-configure_npm_yml "${1}" "${2}" "${3}"
+# Install NPM package using JFrog CLI
+function install_npm_package() {
+  local buildName buildNumber
+
+  buildName="${1}"
+  buildNumber="${2}"
+
+  # Install NPM package using JFrog CLI
+  jf npm install --build-name="${buildName}" --build-number="${buildNumber}"
+}

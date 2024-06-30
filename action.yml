@@ -42,5 +42,8 @@ runs:
 
     - name: Configure NPM
       #run: npm_builder.sh ${{ inputs.version }} ${{ inputs.resolver }}
-      run: npm_builder.sh "12345" "tzahi-res" "tzahi-dep"
+      run: |
+        source npm_builder.sh
+        configure_npm_yml "12345" "tzahi-res" "tzahi-dep"
+        install_npm_package "my_build" "999"
       shell: bash
