@@ -22,13 +22,13 @@ EOL
   echo "Temporary YAML file created at: $tempYamlFile"
   cat "${tempYamlFile}"
 
-  if [[ -n "${resolver}" ]]; then
-  echo "Adding a resolver to npm.yml file"
-  awk -v resolver="${resolver}" '
+  if [[ -n "${deployer}" ]]; then
+  echo "Adding a deployer to npm.yml file"
+  awk -v deployer="${deployer}" '
 /^type: npm$/ {
     print
-    print "resolver:"
-    print "    repo: " resolver
+    print "deployer:"
+    print "    repo: " deployer
     print "    serverId: ghpoc"
     next
 }
@@ -36,13 +36,13 @@ EOL
 ' "$tempYamlFile" > temp.yml && mv temp.yml "$tempYamlFile"
   fi
 
-  if [[ -n "${deployer}" ]]; then
-  echo "Adding a deployer to npm.yml file"
-  awk -v deployer="${deployer}" '
+  if [[ -n "${resolver}" ]]; then
+  echo "Adding a resolver to npm.yml file"
+  awk -v resolver="${resolver}" '
 /^type: npm$/ {
     print
     print "resolver:"
-    print "    repo: " deployer
+    print "    repo: " resolver
     print "    serverId: ghpoc"
     next
 }
