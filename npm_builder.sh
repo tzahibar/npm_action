@@ -4,27 +4,22 @@ echo "hi"
 
 # Configure NPM.yml file
 function configure_npm_yml() {
-  local filePath
+  local tempYamlFile
 
-  filePath='.jfrog/projects/npm.yaml'
-  # Update the version to 1.0.0
-  sed -i 's/^version: .*/version: 1.0.0/' "${filePath}"
+  tempYamlFile=$(mktemp /tmp/npm.yml)
 
+  # Create the temporary YAML file with custom parameters
+cat <<EOL > "$tempYamlFile"
+version: 123
+type: npm
+resolver:
+    repo: tzahi_npm_remote_test
+    serverId: ghpoc
+EOL
 
-  awk '
-/^type: npm$/ {
-    print
-    print "resolver:"
-    print "    repo: asd"
-    print "    serverId: asd"
-    next
-}
-{ print }
-' "$filePath" > temp.yml && mv temp.yml "$filePath"
-
-
-
-  cat "${filePath}"
+  # Output the temporary YAML file path
+  echo "Temporary YAML file created at: $tempYamlFile"
+  cat "${tempYamlFile}"
 }
 
 # Configure NPM.yml file
